@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Layout.astro
-title: "Thinking with Sound: Audio Chain-of-Thought Enables Multimodal Reasoning in Large Audio-Language Models"
-description: "Thinking-with-Sound (TwS) equips LALMs with audio-domain Chain-of-Thought, enabling interleaved linguistic reasoning and on-the-fly acoustic analysis for robust multimodal understanding."
+title: "FrameMind: Frame-Interleaved Video Reasoning via Reinforcement Learning"
+description: "We propose FrameMind, an RL-trained framework that learns to actively sample video frames while it reasons. This dynamic perception overcomes the limits of static models and achieves state-of-the-art results."
 favicon: favicon.svg
 thumbnail: screenshot-light.png
 ---
@@ -82,7 +82,7 @@ export const components = {pre: CodeBlock, table: Table}
   />
 
 <div class="text-center text-lg mb-8">
-  <strong>Thinking-with-Sound (TwS)</strong> equips LALMs with audio-domain Chain-of-Thought, enabling interleaved linguistic reasoning and on-the-fly acoustic analysis for robust multimodal understanding.
+ We propose <strong>FrameMind</strong>, an RL-trained framework that learns to actively sample video frames while it reasons. This dynamic perception overcomes the limits of static models and achieves state-of-the-art results.
 </div>
 
 <Video source={outside} />
@@ -91,7 +91,7 @@ export const components = {pre: CodeBlock, table: Table}
 
 ## Abstract
 
-Large Audio-Language Models (LALMs) have demonstrated remarkable capabilities in audio understanding and generation. However, their reasoning processes remain opaque, and they often struggle with complex audio reasoning tasks that require multi-step analysis. To address these limitations, we introduce **Thinking-with-Sound (TwS)**, a novel framework that equips LALMs with audio-domain Chain-of-Thought (CoT) reasoning capabilities. TwS enables models to perform interleaved linguistic reasoning and on-the-fly acoustic analysis, leading to more robust and interpretable multimodal understanding. Our approach leverages a dual-stream architecture that processes both textual and acoustic features simultaneously, allowing the model to reason about audio content through natural language while maintaining access to low-level acoustic details. We evaluate TwS on a comprehensive suite of audio reasoning tasks, including audio question answering, audio summarization, and audio-based decision making. Experimental results demonstrate that TwS significantly improves performance on complex audio reasoning tasks, with particular gains on the challenging **MELD-Hard1k** benchmark. Furthermore, our **Audio CoT** approach provides interpretable reasoning traces that reveal how the model processes and understands audio content. The framework is generalizable across different LALM architectures and can be easily integrated into existing systems. Our work opens new directions for developing more capable and transparent audio-language models that can reason about sound in a human-like manner.
+Current video understanding models rely on fixed frame sampling strategies, processing predetermined visual inputs regardless of the specific reasoning requirements of each question. This static approach limits their ability to adaptively gather visual evidence, leading to suboptimal performance on tasks requiring either broad temporal coverage or fine-grained spatial detail. In this paper, we introduce \textbf{FrameMind}, a novel end-to-end framework trained with reinforcement learning that enables models to dynamically request visual information during reasoning through Frame-Interleaved Chain-of-Thought (FiCOT). Unlike traditional approaches, FrameMind operates in multiple turns where the model alternates between textual reasoning and active visual perception, using tools to extract targeted frames or video clips based on identified knowledge gaps. To train effective dynamic sampling policies, we propose Dynamic Resolution Frame Sampling (DRFS), which exposes models to diverse temporal–spatial trade-offs during learning, and DRFS-GRPO, a group-relative policy optimization algorithm that learns from outcome-based rewards without requiring frame-level annotations. Extensive experiments on challenging benchmarks like MLVU and VideoMME demonstrate that our method significantly outperforms existing models, advancing the state of the art in flexible and efficient video understanding.
 
 </HighlightedSection>
 
