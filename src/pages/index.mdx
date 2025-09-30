@@ -1,66 +1,171 @@
 ---
-# 页面元信息（按需修改）
-title: Thinking with Sound — Demo
-layout: "../layouts/BaseLayout.astro"
-description: Thinking-with-Sound (TwS) equips LALMs with audio-domain Chain-of-Thought, enabling interleaved linguistic reasoning and on-the-fly acoustic analysis for robust multimodal understanding.
+layout: ../layouts/Layout.astro
+title: Research Project Page Template
+description: Simple project page template for your research paper, built with Astro and Tailwind CSS
+favicon: favicon.svg
+thumbnail: screenshot-light.png
 ---
 
-<section className="max-w-3xl mx-auto px-6 pt-16 pb-8">
-  {/* 标题 */}
-  <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
-    <span className="mr-2">🎧</span>
-    <span>Thinking with Sound: <span className="block">Audio Chain-of-Thought Enables Multimodal Reasoning in Large Audio‑Language Models</span></span>
-  </h1>
+import Header from "../components/Header.astro";
+import Video from "../components/Video.astro";
+import HighlightedSection from "../components/HighlightedSection.astro";
+import SmallCaps from "../components/SmallCaps.astro";
+import Figure from "../components/Figure.astro";
+import Image from "../components/Image.astro";
+import TwoColumns from "../components/TwoColumns.astro";
+import YouTubeVideo from "../components/YouTubeVideo.astro";
+import LaTeX from "../components/LaTeX.astro";
 
-  {/* 作者行（示例：可改为你的作者与链接）*/}
-  <p className="mt-6 text-lg leading-7">
-    <a href="#" className="text-blue-600 hover:underline">Zhen Xiong</a><sup>1</sup>,
-    <span> </span><a href="#" className="text-blue-600 hover:underline">Yujun Cai</a><sup>2</sup>,
-    <span> </span><a href="#" className="text-blue-600 hover:underline">Zhecheng Li</a><sup>3</sup>,
-    <span> </span><a href="#" className="text-blue-600 hover:underline">Junsong Yuan</a><sup>4</sup>,
-    <span> </span><a href="#" className="text-blue-600 hover:underline">Yiwei Wang</a><sup>5</sup>
-  </p>
-  <p className="mt-1 text-base text-gray-600 dark:text-gray-300">
-    <sup>1</sup>University of Southern California, <sup>2</sup>University of Queensland,<br/>
-    <sup>3</sup>University of California, San Diego, <sup>4</sup>University of Buffalo,<br/>
-    <sup>5</sup>University of California, Merced
-  </p>
+import { ImageComparison } from "../components/ImageComparison.tsx";
 
-  {/* 按钮区（Paper / arXiv / Code）*/}
-  <div className="mt-6 flex flex-wrap gap-3">
-    <a href="#" className="inline-flex items-center gap-2 rounded-md bg-gray-100 dark:bg-gray-800 px-3.5 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700">
-      <span aria-hidden>📄</span>
-      <span>Paper (coming soon)</span>
-    </a>
-    <a href="#" className="inline-flex items-center gap-2 rounded-md bg-gray-100 dark:bg-gray-800 px-3.5 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700">
-      <span aria-hidden>✕</span>
-      <span>arXiv (coming soon)</span>
-    </a>
-    <a href="#" className="inline-flex items-center gap-2 rounded-md bg-black text-white px-3.5 py-2 text-sm font-semibold hover:opacity-90">
-      <span aria-hidden>💻</span>
-      <span>Code</span>
-    </a>
-  </div>
+import outside from "../assets/outside.mp4";
+import transformer from "../assets/transformer.webp";
+import Splat from "../components/Splat.tsx"
+import dogsDiffc from "../assets/dogs-diffc.png"
+import dogsTrue from "../assets/dogs-true.png"
 
-  {/* 副标题/一句话简介 */}
-  <p className="mt-6 text-lg text-gray-700 dark:text-gray-200">
-    Thinking‑with‑Sound (TwS) equips LALMs with audio‑domain Chain‑of‑Thought, enabling interleaved linguistic reasoning and on‑the‑fly acoustic analysis for robust multimodal understanding.
-  </p>
-</section>
 
-<hr className="max-w-3xl mx-auto border-gray-200 dark:border-gray-700"/>
+import CodeBlock from "../components/CodeBlock.astro";
+import Table from "../components/Table.astro";
+export const components = {pre: CodeBlock, table: Table}
 
-<section className="max-w-3xl mx-auto px-6 pt-10 pb-24">
-  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Abstract</h2>
-  <p className="mt-4 leading-7 text-gray-800 dark:text-gray-200">
-    Recent Large Audio‑Language Models (LALMs) have shown strong performance on various audio understanding tasks such as speech translation and Audio Q&amp;A. However, they exhibit significant limitations on challenging audio reasoning tasks in complex acoustic scenarios. These situations would greatly benefit from the use of acoustic tools like noise suppression, source separation, and precise temporal alignment, but current LALMs lack access to such tools. To address this limitation, we introduce <em>Thinking‑with‑Sound</em> (TwS), a framework that equips LALMs with Audio CoT by combining linguistic reasoning with on‑the‑fly audio‑domain analysis. Unlike existing approaches that treat audio as static input, TwS enables models to actively <strong>think</strong> with audio signals, performing numerical analysis and digital manipulation through multimodal reasoning. To evaluate this approach, we construct <strong>MELD‑Hard1k</strong>, a new robustness benchmark created by introducing various acoustic perturbations. Experiments reveal that state‑of‑the‑art LALMs suffer dramatic performance degradation on MELD‑Hard1k, with accuracy dropping by more than 50% compared to clean audio. TwS achieves substantial improvements in robustness, demonstrating both effectiveness and scalability: small models gain 24.73% absolute accuracy, with improvements scaling consistently up to 36.61% for larger models. Our findings demonstrate that Audio CoT can significantly enhance robustness without retraining, opening new directions for developing more robust audio understanding systems.
-  </p>
-</section>
+<Header
+  title={frontmatter.title}
+  authors={[
+    {
+      name: "Roman Hauksson",
+      url: "https://roman.technology",
+      institution: "Independent",
+      notes: ["*", "†"],
+    },
+    {
+      name: "Author Two",
+      institution: "Institution Two",
+      notes: ["*", "†"],
+    },
+    {
+      name: "Author Three",
+      institution: "Institution Three",
+      notes: ["†"],
+    },
+    {
+      name: "Author Four",
+      institution: "Institution Four",
+    },
+  ]}
+  conference="Conference Name"
+  notes={[
+    {
+      symbol: "*",
+      text: "author note one",
+    },
+    {
+      symbol: "†",
+      text: "author note two",
+    },
+  ]}
+  links={[
+    {
+      name: "Paper",
+      url: "",
+      icon: "ri:file-pdf-2-line",
+    },
+    {
+      name: "Code",
+      url: "https://github.com/RomanHauksson/academic-project-astro-template",
+      icon: "ri:github-line",
+    },
+    {
+      name: "arXiv",
+      url: "",
+      icon: "academicons:arxiv",
+    },
+    {
+      name: "Bluesky",
+      url: "",
+      icon: "ri:bluesky-line"
+    }
+  ]}
+  />
 
-{/* 轻量样式兜底（如果模板已接入 Tailwind 可忽略）*/}
-<style>
-  {`
-  :root { --tw-shadow-color: 0 0 0; }
-  section p a { text-decoration: underline; }
-  `}
-</style>
+<Video source={outside} />
+
+<HighlightedSection>
+
+## Abstract
+
+This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+
+</HighlightedSection>
+
+## Figures
+
+Use the figure component to display images, videos, equations, or any other element, with an optional caption.
+
+<Figure>
+  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
+</Figure>
+
+## Image comparison slider
+
+An interactive, accessible slider component with keyboard navigation.
+<Figure>
+  <ImageComparison slot="figure" client:load imageUrlOne={dogsDiffc.src} imageUrlTwo={dogsTrue.src} altTextOne="Photo of two dogs running side-by-side in shallow water, lossily compressed using the DiffC algorithm" altTextTwo="Original photo of two dogs running side-by-side in shallow water" />
+  <span slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the <a href="https://jeremyiv.github.io/diffc-project-page/">DiffC algorithm</a>.</span>
+</Figure>
+
+## Two columns
+
+Use the two columns component to display two columns of content. In this example, the first column contains a figure with a YouTube video and the second column contains a figure with a custom [React](https://react.dev/) component. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
+
+<TwoColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="wjZofJX0v4M" />
+    <span slot="caption">Take a look at this YouTube video.</span>
+  </Figure>
+  <Figure slot="right">
+    <Splat slot="figure" client:idle />
+    <span slot="caption">Now look at this <a href="https://en.wikipedia.org/wiki/Gaussian_splatting">Gaussian splat</a>, rendered with a React component.</span>
+  </Figure>
+</TwoColumns>
+
+## Heading levels
+
+Use headings to divide your content into sections.
+
+### Heading 3
+
+Go down a level to heading 3...
+
+#### Heading 4
+
+...and down again to heading 4.
+
+## LaTeX
+
+You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
+
+<LaTeX formula="\int_a^b f(x) dx" />
+
+## Tables
+
+You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
+
+| Model | Accuracy | F1 score | Training time (hours) |
+| :--- | :---: | :---: | :---: |
+| BERT-base | 0.89 | 0.87 | 4.5 |
+| RoBERTa-large | 0.92 | 0.91 | 7.2 |
+| DistilBERT | 0.86 | 0.84 | 2.1 |
+| XLNet | 0.90 | 0.89 | 6.8 |
+
+## BibTeX citation
+
+```bibtex
+@misc{roman2024academic,
+  author = "{Roman Hauksson}",
+  title = "Academic Project Page Template",
+  year = "2024",
+  howpublished = "\url{https://research-template.roman.technology}",
+}
+```
