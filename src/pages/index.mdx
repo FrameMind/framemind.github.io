@@ -23,7 +23,7 @@ import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
-
+import overview from "../assets/overview9.pdf"
 import CodeBlock from "../components/CodeBlock.astro";
 import Table from "../components/Table.astro";
 export const components = {pre: CodeBlock, table: Table}
@@ -95,13 +95,11 @@ Current video understanding models rely on fixed frame sampling strategies, proc
 
 </HighlightedSection>
 
-## Figures
-
-Use the figure component to display images, videos, equations, or any other element, with an optional caption.
+## Overview
 
 <Figure>
-  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
+  <Image slot="figure" source={overview} altText="Overall framework of FrameMind, illustrating the iterative perception-reasoning loop. The agent first thinks, then acts (calls tools) to gather visual evidence, and updates its understanding to inform the next cycle." />
+  <span slot="caption">Overall framework of FrameMind, illustrating the iterative perception-reasoning loop. The agent first thinks, then acts (calls tools) to gather visual evidence, and updates its understanding to inform the next cycle.</span>
 </Figure>
 
 
