@@ -8,29 +8,36 @@ interface Props {
 const { authors } = Astro.props;
 ---
 
-<div class="flex flex-row gap-x-8 gap-y-4 flex-wrap justify-center">
-  {
-    authors.map((author) => (
-      <div class="flex flex-col items-center text-center">
-        <span class="text-xl flex flex-row">
-          {author.url ? (
-            <a href={author.url} class="">
-              {author.name}
-            </a>
-          ) : (
-            author.name
-          )}
+<div class="flex flex-col items-center gap-4">
+  <div class="flex flex-row gap-x-2 gap-y-2 flex-wrap justify-center">
+    {
+      authors.map((author, index) => (
+        <span class="text-xl">
+          <a href={author.url || "#"} class="text-blue-600 hover:underline">
+            {author.name}
+          </a>
           {author.notes && (
-            <sup class="text-xl">
+            <sup class="text-black text-sm">
               {author.notes.map(
-                (note, index, array) =>
-                  note + (index < array.length - 1 ? "," : "")
+                (note, noteIndex, array) =>
+                  note + (noteIndex < array.length - 1 ? "," : "")
               )}
             </sup>
           )}
+          {index < authors.length - 1 && <span>,</span>}
         </span>
-        {author.institution && <p>{author.institution}</p>}
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
+  <div class="flex flex-col items-center gap-1 text-sm">
+    <div class="flex flex-row gap-x-2 flex-wrap justify-center">
+      <span>¹University of Southern California, ²University of Queensland,</span>
+    </div>
+    <div class="flex flex-row gap-x-2 flex-wrap justify-center">
+      <span>³University of California, San Diego, ⁴University of Buffalo,</span>
+    </div>
+    <div class="flex flex-row gap-x-2 flex-wrap justify-center">
+      <span>⁵University of California, Merced</span>
+    </div>
+  </div>
 </div>
